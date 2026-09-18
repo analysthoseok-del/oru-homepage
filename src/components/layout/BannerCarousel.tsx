@@ -27,7 +27,8 @@ export function BannerCarousel() {
     <section
       aria-label="배너"
       aria-roledescription="carousel"
-      className="relative h-[220px] w-full overflow-hidden rounded-2xl md:h-[280px] lg:h-[350px]"
+      /* 좁은 화면에서는 배너 비율을 배너 이미지(약 2:1)에 맞춰 카피가 잘리지 않게 한다. */
+      className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl md:aspect-auto md:h-[280px] lg:h-[350px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -52,6 +53,7 @@ export function BannerCarousel() {
               src={slide.src}
               alt={slide.alt}
               className="h-full w-full object-cover"
+              style={{ objectPosition: slide.objectPosition ?? "center" }}
             />
           ) : (
             <p className="select-none text-[38px] font-extrabold text-white md:text-[52px] lg:text-[64px]">
