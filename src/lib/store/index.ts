@@ -3,6 +3,7 @@ import { fileStore } from "./file-store";
 import { getConnectionString, postgresStore } from "./postgres-store";
 
 export type { PostListResult, UpdateResult } from "./adapter";
+export { StorageReadOnlyError } from "./errors";
 
 /**
  * 저장소 선택.

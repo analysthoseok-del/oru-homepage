@@ -3,6 +3,7 @@ import path from "path";
 import type { PostInput, StoredPost } from "@/lib/types";
 import type { PostListResult, PostStore, UpdateResult } from "./adapter";
 import { createId, createSeed } from "./seed";
+import { StorageReadOnlyError } from "./errors";
 
 /**
  * 로컬 개발용 파일 저장소.
@@ -10,6 +11,13 @@ import { createId, createSeed } from "./seed";
  */
 const DATA_DIR = path.join(process.cwd(), "data");
 const DATA_FILE = path.join(DATA_DIR, "posts.json");
+
+/**
+ * 파일시스템에 쓸 수 없는 환경(스토리지를 연결하지 않은 Vercel 배포 등)에서는
+ * 읽기 전용으로 내려앉는다. 목록·상세는 시드 데이터로 정상 렌더링되고,
+ * 쓰기 요청만 명확한 안내와 함께 거절된다.
+ */
+let readOnlySeed: StoredPost[] | null = null;
 
 let writeQueue: Promise<unknown> = Promise.resolve();
 
@@ -26,13 +34,27 @@ async function writeAll(posts: StoredPost[]): Promise<void> {
 }
 
 async function readAll(): Promise<StoredPost[]> {
+  if (readOnlySeed) return readOnlySeed;
+
   try {
     return JSON.parse(await fs.readFile(DATA_FILE, "utf-8")) as StoredPost[];
   } catch {
     const seed = createSeed();
-    await writeAll(seed);
+    try {
+      await writeAll(seed);
+    } catch (cause) {
+      console.warn(
+        "[store] 파일 저장소에 쓸 수 없어 읽기 전용으로 동작합니다.",
+        cause,
+      );
+      readOnlySeed = seed;
+    }
     return seed;
   }
+}
+
+function assertWritable(): void {
+  if (readOnlySeed) throw new StorageReadOnlyError();
 }
 
 export const fileStore: PostStore = {
@@ -61,6 +83,7 @@ export const fileStore: PostStore = {
   create(input: PostInput) {
     return enqueue(async () => {
       const posts = await readAll();
+      assertWritable();
       const now = new Date().toISOString();
       const post: StoredPost = {
         id: createId(),
@@ -80,6 +103,7 @@ export const fileStore: PostStore = {
   update(id: string, input: Omit<PostInput, "author">): Promise<UpdateResult> {
     return enqueue(async () => {
       const posts = await readAll();
+      assertWritable();
       const index = posts.findIndex((post) => post.id === id);
       if (index === -1) return { ok: false as const, reason: "not-found" as const };
       if (posts[index].password !== input.password) {
@@ -102,6 +126,7 @@ export const fileStore: PostStore = {
   remove(id: string) {
     return enqueue(async () => {
       const posts = await readAll();
+      assertWritable();
       const next = posts.filter((post) => post.id !== id);
       if (next.length === posts.length) return false;
       await writeAll(next);

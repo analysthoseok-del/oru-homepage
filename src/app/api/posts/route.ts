@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { createPost, listPosts } from "@/lib/store";
+import { createPost, listPosts, StorageReadOnlyError } from "@/lib/store";
 import { MAX_IMAGES } from "@/lib/types";
 import { toPublicPost } from "@/lib/serialize";
 
@@ -45,6 +45,13 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const post = await createPost({ title, content, author, password, images });
-  return NextResponse.json(toPublicPost(post), { status: 201 });
+  try {
+    const post = await createPost({ title, content, author, password, images });
+    return NextResponse.json(toPublicPost(post), { status: 201 });
+  } catch (cause) {
+    if (cause instanceof StorageReadOnlyError) {
+      return NextResponse.json({ message: cause.message }, { status: 503 });
+    }
+    throw cause;
+  }
 }

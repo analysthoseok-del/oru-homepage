@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { deletePost, getPost, updatePost } from "@/lib/store";
+import {
+  deletePost,
+  getPost,
+  StorageReadOnlyError,
+  updatePost,
+} from "@/lib/store";
 import { MAX_IMAGES } from "@/lib/types";
 import { toPublicPost } from "@/lib/serialize";
 
@@ -48,7 +53,18 @@ export async function PUT(
     );
   }
 
-  const result = await updatePost(id, { title, content, password, images });
+  const result = await updatePost(id, {
+    title,
+    content,
+    password,
+    images,
+  }).catch((cause) => {
+    if (cause instanceof StorageReadOnlyError) return cause;
+    throw cause;
+  });
+  if (result instanceof StorageReadOnlyError) {
+    return NextResponse.json({ message: result.message }, { status: 503 });
+  }
   if (!result.ok) {
     return result.reason === "not-found"
       ? NextResponse.json(
@@ -70,7 +86,13 @@ export async function DELETE(
   ctx: RouteContext<"/api/posts/[id]">,
 ) {
   const { id } = await ctx.params;
-  const deleted = await deletePost(id);
+  const deleted = await deletePost(id).catch((cause) => {
+    if (cause instanceof StorageReadOnlyError) return cause;
+    throw cause;
+  });
+  if (deleted instanceof StorageReadOnlyError) {
+    return NextResponse.json({ message: deleted.message }, { status: 503 });
+  }
   if (!deleted) {
     return NextResponse.json(
       { message: "게시글을 찾을 수 없습니다." },
