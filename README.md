@@ -11,7 +11,9 @@ Figma 시안(게시물 조회 / 목록 / 규칙 정의 / 게시물 작성·수�
 | 스타일 | Tailwind CSS v4 | Figma 규칙을 `@theme` 디자인 토큰으로 정의 |
 | 아이콘 | react-icons (Material / Boxicons) | Figma 아이콘과 가장 유사한 아이콘 사용 |
 | 폰트 | [SUIT](https://sun.fo/suit/) Variable | `next/font/local` 로 self-host |
-| 백엔드 | Next.js Route Handlers | `data/posts.json` 파일 저장소 |
+| 백엔드 | Next.js Route Handlers | 저장소 어댑터 (파일 / Postgres) |
+| DB | Postgres (`pg`) | Vercel 배포 시 자동 선택 |
+| 이미지 | Vercel Blob / 로컬 파일 | 환경변수로 자동 선택 |
 
 ## 실행
 
@@ -25,8 +27,31 @@ pnpm build && pnpm start   # 프로덕션 실행
 pnpm lint                  # ESLint
 ```
 
-최초 실행 시 `data/posts.json` 에 27건의 시드 게시글이 생성되어 무한 스크롤을 바로 확인할 수 있습니다.
+환경변수 없이 바로 실행됩니다. 최초 실행 시 27건의 시드 게시글이 생성되어 무한 스크롤을 바로 확인할 수 있습니다.
 (시드 게시글의 비밀번호는 모두 `1234` 입니다.)
+
+## 저장소 전환 (로컬 ↔ Vercel)
+
+같은 코드가 환경변수에 따라 저장소를 자동으로 고릅니다. 페이지·API 코드는 바뀌지 않습니다.
+
+| | 게시글 | 이미지 | 선택 조건 |
+| --- | --- | --- | --- |
+| 로컬 | `data/posts.json` | `data/uploads/` → `/api/uploads/:name` | 기본값 |
+| Vercel | Postgres `posts` 테이블 | Vercel Blob 공개 URL | `POSTGRES_URL`, `BLOB_READ_WRITE_TOKEN` |
+
+`posts` 테이블과 시드 데이터는 첫 요청 시 자동 생성됩니다(`CREATE TABLE IF NOT EXISTS`). 별도 마이그레이션 명령이 필요 없습니다.
+
+## Vercel 배포
+
+1. **저장소 연결** — Vercel → Add New → Project → 이 GitHub 저장소 Import → 브랜치 선택
+2. **Postgres 연결** — 프로젝트 → Storage → Marketplace 의 **Neon**(구 Vercel Postgres) 생성 후 프로젝트에 연결
+   → `POSTGRES_URL` / `DATABASE_URL` 이 자동 주입됩니다
+3. **Blob 연결** — 프로젝트 → Storage → **Blob** 생성 후 연결
+   → `BLOB_READ_WRITE_TOKEN` 이 자동 주입됩니다
+4. **재배포** — Deployments → Redeploy (환경변수를 반영하기 위해 한 번 필요합니다)
+
+Build Command·Output Directory는 기본값 그대로 두면 됩니다. 2·3번을 건너뛰면 조회는 되지만
+서버리스 파일시스템이 읽기 전용이라 등록·수정·삭제·업로드가 실패합니다.
 
 ## 배너 이미지 교체
 
@@ -112,5 +137,6 @@ src/app
 | PUT | `/api/posts/:id` | 수정 (비밀번호 확인, 작성자 변경 불가) |
 | DELETE | `/api/posts/:id` | 삭제 |
 | POST | `/api/upload` | 이미지 업로드 (5MB, png/jpg/webp/gif/svg) |
+| GET | `/api/uploads/:name` | 로컬 업로드 이미지 서빙 (배포 시엔 Blob URL 사용) |
 
 응답에는 비밀번호가 포함되지 않습니다(`toPublicPost`).
