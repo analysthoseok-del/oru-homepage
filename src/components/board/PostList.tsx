@@ -25,6 +25,8 @@ export function PostList({
   const [error, setError] = useState<string | null>(null);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const loadingRef = useRef(false);
+  // 이미 붙인 글 id. 공용 게시판이라 페이지 사이에 중복이 섞일 수 있다.
+  const seenRef = useRef(new Set(initialPosts.map((post) => post.id)));
 
   const loadMore = useCallback(async () => {
     if (loadingRef.current || !hasMore) return;
@@ -34,13 +36,13 @@ export function PostList({
     try {
       const nextPage = page + 1;
       const data = await fetchPosts(nextPage, pageSize);
-      setPosts((current) => {
-        // 중복 id 가 섞이지 않도록 합친다.
-        const seen = new Set(current.map((post) => post.id));
-        return [...current, ...data.items.filter((post) => !seen.has(post.id))];
-      });
+      const fresh = data.items.filter((post) => !seenRef.current.has(post.id));
+      fresh.forEach((post) => seenRef.current.add(post.id));
+
+      setPosts((current) => [...current, ...fresh]);
       setPage(nextPage);
-      setHasMore(data.hasMore);
+      // 새로 붙은 글이 하나도 없으면 더 요청하지 않는다(빈 페이지 반복 방지).
+      setHasMore(data.hasMore && fresh.length > 0);
     } catch (cause) {
       setError(
         cause instanceof Error ? cause.message : "목록을 불러오지 못했습니다.",

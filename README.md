@@ -39,8 +39,13 @@ pnpm verify:graphql            # 스키마와 읽기 동작 점검
 node scripts/verify-graphql.mjs --write   # 등록/수정/삭제/업로드까지 점검 (테스트 글은 자동 삭제)
 ```
 
-앱이 사용하는 타입·필드·인자(`Board`, `CreateBoardInput`, `UpdateBoardInput`, `updateBoard` 인자 등)를
-introspection 으로 대조하고, 실제 요청까지 실행해 성공/실패를 출력합니다.
+점검 항목
+
+- introspection 으로 앱이 쓰는 타입·필드·인자 대조
+  (`Board`, `CreateBoardInput`, `UpdateBoardInput`, `updateBoard` 의 `boardId`/`password`/`updateBoardInput`)
+- `fetchBoards` 정렬 방향 (앱은 최신순을 전제로 합니다)
+- 1·2페이지 중복 여부, 이미지 URL 접근
+- `--write` 시 등록 → 수정 → 작성자 유지 → 잘못된 비밀번호 거절 → 삭제
 
 ## 백엔드 전환
 

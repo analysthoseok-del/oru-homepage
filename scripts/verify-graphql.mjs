@@ -102,6 +102,33 @@ async function main() {
   ok("fetchBoards(page: 1)", `${list.fetchBoards.length}건`);
   ok("fetchBoardsCount", `전체 ${list.fetchBoardsCount}건`);
 
+  // 목록 정렬 방향 — 앱은 최신 글이 위에 오는 것을 전제로 한다.
+  if (list.fetchBoards.length >= 2) {
+    const first = new Date(list.fetchBoards[0].createdAt).getTime();
+    const last = new Date(
+      list.fetchBoards[list.fetchBoards.length - 1].createdAt,
+    ).getTime();
+    if (first > last) {
+      ok("목록 정렬", "최신순(내림차순) — 앱 전제와 일치");
+    } else if (first < last) {
+      ng(
+        "목록 정렬",
+        "오래된 순(오름차순)입니다. graphql-store.list 에서 정렬 보정이 필요합니다",
+      );
+    } else {
+      console.log("  ℹ️  1페이지의 작성 시각이 같아 정렬 방향을 판단하지 못했습니다.");
+    }
+  }
+
+  // 2페이지가 1페이지와 겹치지 않는지 (페이지네이션 경계)
+  if (list.fetchBoardsCount > 10) {
+    const second = await gql(`query { fetchBoards(page: 2) { _id } }`);
+    const firstIds = new Set(list.fetchBoards.map((b) => b._id));
+    const overlap = second.fetchBoards.filter((b) => firstIds.has(b._id));
+    if (overlap.length) ng("페이지 경계", `1·2페이지가 ${overlap.length}건 겹칩니다`);
+    else ok("페이지 경계", `2페이지 ${second.fetchBoards.length}건, 중복 없음`);
+  }
+
   const sample = list.fetchBoards[0];
   if (sample) {
     const detail = await gql(

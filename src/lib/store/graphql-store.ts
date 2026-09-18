@@ -77,7 +77,11 @@ export const graphqlStore: PostStore = {
       page,
       limit: GRAPHQL_PAGE_SIZE,
       total,
-      hasMore: (page - 1) * GRAPHQL_PAGE_SIZE + items.length < total,
+      // 공용 게시판이라 조회 사이에 글이 지워지면 fetchBoardsCount 가 실제보다
+      // 클 수 있다. 빈 페이지가 오면 개수와 무관하게 끝으로 처리한다.
+      hasMore:
+        items.length > 0 &&
+        (page - 1) * GRAPHQL_PAGE_SIZE + items.length < total,
     };
   },
 
