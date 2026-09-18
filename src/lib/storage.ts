@@ -1,5 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { uploadFile as uploadToGraphQL } from "@/lib/graphql/client";
+import { getBackend } from "@/lib/store";
 
 /**
  * 로컬 업로드 보관 위치.
@@ -24,11 +26,16 @@ function hasBlobToken(): boolean {
 }
 
 /**
- * 이미지 저장.
- * - Vercel Blob 토큰이 있으면 Blob 에 업로드하고 공개 URL 을 돌려준다.
- * - 없으면 `data/uploads` 에 저장하고 `/api/uploads/:name` 로 서빙한다(로컬 개발).
+ * 이미지 저장. 게시글 백엔드와 같은 곳에 저장한다.
+ * - graphql  → 코드캠프 백엔드의 uploadFile 뮤테이션
+ * - postgres → Vercel Blob (토큰이 있을 때)
+ * - file     → `data/uploads` 에 저장하고 `/api/uploads/:name` 로 서빙
  */
 export async function saveImage(file: File, ext: string): Promise<string> {
+  if (getBackend() === "graphql") {
+    return uploadToGraphQL(file);
+  }
+
   const name = `${Date.now().toString(36)}-${Math.random()
     .toString(36)
     .slice(2, 8)}.${ext}`;

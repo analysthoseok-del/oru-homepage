@@ -1,9 +1,7 @@
 import { connection } from "next/server";
 import { PostList } from "@/components/board/PostList";
-import { listPosts } from "@/lib/store";
+import { listPosts, PAGE_SIZE } from "@/lib/store";
 import { toPublicPost } from "@/lib/serialize";
-
-const PAGE_SIZE = 10;
 
 /** http://localhost:3000 첫 화면 = 게시글 목록 */
 export default async function HomePage() {

@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { createPost, listPosts, StorageReadOnlyError } from "@/lib/store";
+import {
+  createPost,
+  listPosts,
+  PAGE_SIZE,
+  StorageReadOnlyError,
+} from "@/lib/store";
 import { MAX_IMAGES } from "@/lib/types";
 import { toPublicPost } from "@/lib/serialize";
 
@@ -10,7 +15,7 @@ export async function GET(request: NextRequest) {
   const page = Math.max(1, Number(searchParams.get("page") ?? 1) || 1);
   const limit = Math.min(
     50,
-    Math.max(1, Number(searchParams.get("limit") ?? 10) || 10),
+    Math.max(1, Number(searchParams.get("limit") ?? PAGE_SIZE) || PAGE_SIZE),
   );
 
   const result = await listPosts(page, limit);

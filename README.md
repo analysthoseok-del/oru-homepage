@@ -11,9 +11,9 @@ Figma 시안(게시물 조회 / 목록 / 규칙 정의 / 게시물 작성·수�
 | 스타일 | Tailwind CSS v4 | Figma 규칙을 `@theme` 디자인 토큰으로 정의 |
 | 아이콘 | react-icons (Material / Boxicons) | Figma 아이콘과 가장 유사한 아이콘 사용 |
 | 폰트 | [SUIT](https://sun.fo/suit/) Variable | `next/font/local` 로 self-host |
-| 백엔드 | Next.js Route Handlers | 저장소 어댑터 (파일 / Postgres) |
-| DB | Postgres (`pg`) | Vercel 배포 시 자동 선택 |
-| 이미지 | Vercel Blob / 로컬 파일 | 환경변수로 자동 선택 |
+| 백엔드 | 코드캠프 GraphQL (기본) | `backend-practice.codebootcamp.co.kr/graphql` |
+| API 계층 | Next.js Route Handlers | 서버에서 GraphQL 호출 (브라우저 CORS 없음) |
+| 대체 백엔드 | Postgres(`pg`) / 로컬 파일 | `BOARD_BACKEND` 로 전환 |
 
 ## 실행
 
@@ -27,35 +27,59 @@ pnpm build && pnpm start   # 프로덕션 실행
 pnpm lint                  # ESLint
 ```
 
-환경변수 없이 바로 실행됩니다. 최초 실행 시 27건의 시드 게시글이 생성되어 무한 스크롤을 바로 확인할 수 있습니다.
-(시드 게시글의 비밀번호는 모두 `1234` 입니다.)
+환경변수 없이 바로 실행됩니다. 기본 백엔드가 코드캠프 실습 서버라 DB 세팅이 필요 없고,
+이미 등록된 게시글이 많아 무한 스크롤을 바로 확인할 수 있습니다.
 
-## 저장소 전환 (로컬 ↔ Vercel)
+> 코드캠프 실습 백엔드는 **공용 게시판**입니다. 다른 사용자가 등록한 글도 함께 보입니다.
 
-같은 코드가 환경변수에 따라 저장소를 자동으로 고릅니다. 페이지·API 코드는 바뀌지 않습니다.
+### 연동 점검
 
-| | 게시글 | 이미지 | 선택 조건 |
+```bash
+pnpm verify:graphql            # 스키마와 읽기 동작 점검
+node scripts/verify-graphql.mjs --write   # 등록/수정/삭제/업로드까지 점검 (테스트 글은 자동 삭제)
+```
+
+앱이 사용하는 타입·필드·인자(`Board`, `CreateBoardInput`, `UpdateBoardInput`, `updateBoard` 인자 등)를
+introspection 으로 대조하고, 실제 요청까지 실행해 성공/실패를 출력합니다.
+
+## 백엔드 전환
+
+`BOARD_BACKEND` 환경변수 하나로 바뀝니다. 페이지·컴포넌트 코드는 그대로입니다.
+
+| `BOARD_BACKEND` | 게시글 | 이미지 | 추가 설정 |
 | --- | --- | --- | --- |
-| 로컬 | `data/posts.json` | `data/uploads/` → `/api/uploads/:name` | 기본값 |
-| Vercel | Postgres `posts` 테이블 | Vercel Blob 공개 URL | `POSTGRES_URL`, `BLOB_READ_WRITE_TOKEN` |
+| `graphql` (기본) | 코드캠프 백엔드 | `uploadFile` 뮤테이션 | 없음 |
+| `postgres` | Postgres `posts` 테이블 | Vercel Blob | `POSTGRES_URL`, `BLOB_READ_WRITE_TOKEN` |
+| `file` | `data/posts.json` | `data/uploads/` → `/api/uploads/:name` | 없음 (로컬 전용) |
 
-`posts` 테이블과 시드 데이터는 첫 요청 시 자동 생성됩니다(`CREATE TABLE IF NOT EXISTS`). 별도 마이그레이션 명령이 필요 없습니다.
+`postgres` 를 쓰면 테이블과 시드 데이터가 첫 요청 시 자동 생성됩니다(`CREATE TABLE IF NOT EXISTS`).
+
+### GraphQL 매핑
+
+| 앱 | 코드캠프 백엔드 |
+| --- | --- |
+| 목록 | `fetchBoards(page)` + `fetchBoardsCount` (페이지당 10건 고정) |
+| 상세 | `fetchBoard(boardId)` |
+| 등록 | `createBoard(createBoardInput)` |
+| 수정 | `updateBoard(boardId, password, updateBoardInput)` — `writer` 는 입력에서 제외 |
+| 삭제 | `deleteBoard(boardId)` |
+| 이미지 | `uploadFile(file)` — 반환 경로에 `https://storage.googleapis.com/` 을 붙여 표시 |
+| 필드 | `_id→id`, `contents→content`, `writer→author` |
 
 ## Vercel 배포
 
-1. **저장소 연결** — Vercel → Add New → Project → 이 GitHub 저장소 Import → 브랜치 선택
-2. **Postgres 연결** — 프로젝트 → Storage → Marketplace 의 **Neon**(구 Vercel Postgres) 생성 후 프로젝트에 연결
-   → `POSTGRES_URL` / `DATABASE_URL` 이 자동 주입됩니다
-3. **Blob 연결** — 프로젝트 → Storage → **Blob** 생성 후 연결
-   → `BLOB_READ_WRITE_TOKEN` 이 자동 주입됩니다
-4. **재배포** — Deployments → Redeploy (환경변수를 반영하기 위해 한 번 필요합니다)
+기본 백엔드(GraphQL)를 쓰면 **추가 설정이 없습니다.**
 
-Build Command·Output Directory는 기본값 그대로 두면 됩니다. 이 브랜치가 저장소의 기본 브랜치이므로
-Import 직후 바로 프로덕션 배포가 됩니다.
+1. Vercel → Add New → Project → 이 GitHub 저장소 Import
+2. Deploy
 
-2·3번을 건너뛴 상태로 배포하면 서버리스 파일시스템이 읽기 전용이라 파일 저장소를 쓸 수 없습니다.
-이 경우에도 앱이 죽지 않고 **목록·상세는 시드 데이터로 정상 렌더링**되며, 등록·수정·삭제 요청만
-503 과 함께 "Postgres/Blob 을 연결해 주세요" 안내를 돌려줍니다.
+Framework 는 Next.js 로 자동 인식되고, Build Command·Output Directory 는 기본값 그대로 두면 됩니다.
+이 브랜치가 저장소의 기본 브랜치라 Import 직후 바로 프로덕션 배포가 됩니다.
+
+Postgres 백엔드로 운영하려면 `BOARD_BACKEND=postgres` 를 설정하고,
+Storage → Marketplace 의 **Neon** 과 **Blob** 을 연결한 뒤 재배포하세요.
+스토리지를 연결하지 않은 채 `file` 백엔드로 배포하면 서버리스 파일시스템이 읽기 전용이라
+목록·상세는 렌더링되지만 등록·수정·삭제는 503 과 함께 설정 안내를 돌려줍니다.
 
 ## 배너 이미지 교체
 

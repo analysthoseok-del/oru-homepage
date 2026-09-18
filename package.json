@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "verify:graphql": "node scripts/verify-graphql.mjs"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",
