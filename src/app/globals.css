@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* =========================================================
+   Design Tokens — Figma "규칙 정의" 시트 1:1 매핑
+   Color / Input / Icon·Font
+   ========================================================= */
+@theme {
+  /* Main */
+  --color-main: #6400ff;
+
+  /* BT (Button) */
+  --color-bt-primary: #6400ff;
+  --color-bt-disabled: #999999;
+
+  /* Font */
+  --color-font-strong: #000000;
+  --color-font-base: #333333;
+  --color-font-sub: #999999;
+
+  /* Border */
+  --color-line: #e5e5e5;
+
+  /* BG */
+  --color-bg: #fafafa;
+  --color-bg-deep: #f2f2f2;
+
+  /* Font family — SUIT (https://sun.fo/suit/) */
+  --font-sans: var(--font-suit), "SUIT Variable", "Apple SD Gothic Neo",
+    system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-font-base);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 숫자/영문 자간을 SUIT 기본값에 맞춤 */
+* {
+  letter-spacing: -0.01em;
+}
+
+/* 파일 인풋은 커스텀 업로드 박스로 대체하므로 시각적으로 숨김 */
+.sr-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 캐러셀 슬라이드 페이드 */
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
