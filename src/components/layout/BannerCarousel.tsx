@@ -63,7 +63,8 @@ export function BannerCarousel() {
         </div>
       ))}
 
-      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2">
+      {/* 밝은 배너 이미지 위에서도 흰 점이 보이도록 그림자를 준다. */}
+      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.45))]">
         {BANNER_SLIDES.map((slide, slideIndex) => (
           <button
             key={slide.id}

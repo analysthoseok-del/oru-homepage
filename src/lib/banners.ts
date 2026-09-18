@@ -25,10 +25,11 @@ export const BANNER_SLIDES: BannerSlide[] = [
   },
   {
     id: "slide-2",
-    src: null,
-    alt: "두 번째 배너",
+    src: "/banners/banner-2.png",
+    alt: "젠 가든의 돌과 모래 결 — 고요한 웰니스 무드",
     title: "Carousel 🎨",
     gradient: "linear-gradient(97deg, #4B00C2 0%, #7C34FF 55%, #B58CFF 100%)",
+    objectPosition: "center",
   },
   {
     id: "slide-3",
