@@ -20,8 +20,8 @@ const oruSerif = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TALKR 게시판",
-  description: "TALKR 게시판 — 게시글 작성/조회/수정/삭제",
+  title: "ORU 게시판",
+  description: "ORU 게시판 — 게시글 작성/조회/수정/삭제",
 };
 
 /** 사이드바(메뉴)는 모든 화면이 공유하는 레이아웃 구조 */

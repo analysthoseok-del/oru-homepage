@@ -35,7 +35,7 @@ export function Sidebar() {
   return (
     <aside className="w-full shrink-0 lg:w-[248px] lg:self-stretch">
       <nav className="h-full rounded-2xl bg-white px-7 py-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
-        <Link href="/" aria-label="TALKR 홈">
+        <Link href="/" aria-label="ORU 홈">
           <Logo />
         </Link>
 

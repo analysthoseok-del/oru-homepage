@@ -6,7 +6,7 @@ export function OruWordmark({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="49 -636 2020 649"
-      className={`h-7 w-auto ${className}`}
+      className={`w-auto ${className || "h-7"}`}
       fill="currentColor"
       role="img"
       aria-label="ORU"
