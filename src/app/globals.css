@@ -27,6 +27,9 @@
   /* Font family — SUIT (https://sun.fo/suit/) */
   --font-sans: var(--font-suit), "SUIT Variable", "Apple SD Gothic Neo",
     system-ui, sans-serif;
+
+  /* Font family — ORU 브랜드 세리프 (Cormorant Garamond, OFL) */
+  --font-serif: var(--font-oru-serif), "Cormorant Garamond", Georgia, serif;
 }
 
 :root {

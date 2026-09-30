@@ -11,15 +11,23 @@ const suit = localFont({
   weight: "100 900",
 });
 
+/** Cormorant Garamond Medium — ORU 브랜드용 세리프 (SIL OFL 1.1) */
+const oruSerif = localFont({
+  src: "../assets/fonts/CormorantGaramond-Medium.woff2",
+  variable: "--font-oru-serif",
+  display: "swap",
+  weight: "500",
+});
+
 export const metadata: Metadata = {
-  title: "TALKR 게시판",
-  description: "TALKR 게시판 — 게시글 작성/조회/수정/삭제",
+  title: "ORU 게시판",
+  description: "ORU 게시판 — 게시글 작성/조회/수정/삭제",
 };
 
 /** 사이드바(메뉴)는 모든 화면이 공유하는 레이아웃 구조 */
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ko" className={`${suit.variable} h-full`}>
+    <html lang="ko" className={`${suit.variable} ${oruSerif.variable} h-full`}>
       <body className="min-h-full bg-bg-deep">
         <div className="mx-auto min-h-screen w-full max-w-[1280px] px-4 py-6 lg:px-8 lg:py-10">
           <div className="min-h-[calc(100vh-80px)] rounded-2xl bg-bg p-4 lg:p-8">
