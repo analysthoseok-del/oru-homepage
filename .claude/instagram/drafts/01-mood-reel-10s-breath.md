@@ -2,7 +2,7 @@
 
 Hook: #2 Negative Command. English stand-in "Stop fixing your skin. Ten seconds,
 just breathe." scored 84.4 STRONG (hookscore.py is English-only).
-Length: ~24s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.md).
+Length: ~31s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.md).
 
 ## Voiceover
 ```
@@ -12,9 +12,11 @@ Length: ~24s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.
         (4초 들숨)
 내쉬고.
         (6초 날숨, 싱잉볼 한 번)
-어때요.
-어깨가 조금 내려갔죠.
-내일도, 10초만.
+어깨의 긴장이 이완되고,
+무거웠던 머리가 맑아짐을
+느껴보세요.
+내일도 1분만,
+내면의 소리를 들어주세요.
 ```
 
 ## Shots / on-screen (1080x1920, text inside y 230–1440, right 230px clear)
@@ -25,8 +27,9 @@ Length: ~24s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.
 | 0:05.5 | 안개가 해 쪽으로 오르는 틸트업 | 들이쉬고 · 1 2 3 4 |
 | 0:10.9 | 싱잉볼 타격, 물결 클로즈업 | 내쉬고 · 6초 |
 | 0:15.1 | 촛불, 천천히 푸시인 | (자막만) |
-| 0:18.1 | 뮤즈 어깨가 내려가는 뒷모습 | (자막만) |
-| 0:21.9 | 0:00과 같은 호수 와이드 (루프) | 내일도 10초만 / 저장해 두세요 |
+| 0:18.1 | 이끼 숲 빛줄기 (뮤즈 소재 생기면 어깨가 내려가는 뒷모습) | (자막만) |
+| 0:21.9 | 빛줄기 클로즈업 | (자막만) |
+| 0:25.7 | 0:00과 같은 호수 와이드 (루프) | 내일도 1분만 / 저장해 두세요 (29.6s~) |
 
 Audio: 물소리 바닥 + 0:10.9 싱잉볼 1회. 트렌딩 음원 없음.
 Burn in captions for every spoken line.
