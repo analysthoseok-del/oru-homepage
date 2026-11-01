@@ -30,3 +30,16 @@ Length: ~24s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.
 
 Audio: 물소리 바닥 + 0:10.9 싱잉볼 1회. 트렌딩 음원 없음.
 Burn in captions for every spoken line.
+
+## Caption (Job A)
+```
+내일 아침, 10초만 숨부터. 저장해 두고 따라 해 보세요.
+
+4초 들이쉬고, 6초 내쉬기.
+내쉬는 숨을 조금 더 길게. 그게 전부예요.
+
+거울 앞에서 무언가를 고치기 전에, 이 짧은 호흡 명상으로 아침 루틴을 시작해 보세요. 스킨케어 루틴의 첫 단계가 숨이어도 괜찮아요.
+
+#호흡명상 #아침루틴 #웰니스
+```
+Search terms: 호흡 명상, 아침 루틴, 스킨케어 루틴. No link, no first comment needed.
