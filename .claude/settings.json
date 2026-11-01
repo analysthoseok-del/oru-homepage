@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p \"$HOME/.claude/instagram\" && for f in \"$CLAUDE_PROJECT_DIR\"/.claude/instagram/*.md; do [ -e \"$f\" ] && [ ! -e \"$HOME/.claude/instagram/$(basename \"$f\")\" ] && cp \"$f\" \"$HOME/.claude/instagram/\"; done; true"
+          }
+        ]
+      }
+    ]
+  }
+}
