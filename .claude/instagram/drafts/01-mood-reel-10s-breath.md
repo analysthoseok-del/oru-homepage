@@ -2,7 +2,7 @@
 
 Hook: #2 Negative Command. English stand-in "Stop fixing your skin. Ten seconds,
 just breathe." scored 84.4 STRONG (hookscore.py is English-only).
-Length: ~31s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.md).
+Length: ~29s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.md).
 
 ## Voiceover
 ```
@@ -12,9 +12,8 @@ Length: ~31s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.
         (4초 들숨)
 내쉬고.
         (6초 날숨, 싱잉볼 한 번)
-어깨의 긴장이 이완되고,
-무거웠던 머리가 맑아짐을
-느껴보세요.
+답답한 마음은 비우고,
+내면을 어루만집니다.
 내일도 1분만,
 내면의 소리를 들어주세요.
 ```
@@ -28,8 +27,8 @@ Length: ~31s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.
 | 0:10.9 | 싱잉볼 타격, 물결 클로즈업 | 내쉬고 · 6초 |
 | 0:15.1 | 촛불, 천천히 푸시인 | (자막만) |
 | 0:18.1 | 이끼 숲 빛줄기 (뮤즈 소재 생기면 어깨가 내려가는 뒷모습) | (자막만) |
-| 0:21.9 | 빛줄기 클로즈업 | (자막만) |
-| 0:25.7 | 0:00과 같은 호수 와이드 (루프) | 내일도 1분만 / 저장해 두세요 (29.6s~) |
+| 0:21.1 | 빛줄기 클로즈업 | (자막만) |
+| 0:24.1 | 0:00과 같은 호수 와이드 (루프) | 내일도 1분만 / 저장해 두세요 (28.0s~) |
 
 Audio: 물소리 바닥 + 0:10.9 싱잉볼 1회. 트렌딩 음원 없음.
 Burn in captions for every spoken line.

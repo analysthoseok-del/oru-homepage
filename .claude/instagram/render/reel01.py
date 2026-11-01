@@ -1,7 +1,7 @@
 import subprocess, sys, math
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 S, A, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
-W, H, FPS, DUR = 1080, 1920, 30, 31.0
+W, H, FPS, DUR = 1080, 1920, 30, 29.4
 lake = Image.open(f"{A}/lake-meditation-dawn.jpg").convert("RGB")
 forest = Image.open(f"{A}/forest-moss-light.jpg").convert("RGB")
 F = f"{S}/fonts"
@@ -17,9 +17,9 @@ shots = [
  (5.5,10.9, lake,   (1225,700,640), (1225,330,640)),
  (10.9,15.1,lake,   (190,760,520),  (200,790,440)),
  (15.1,18.1,lake,   (272,815,400),  (272,820,320)),
- (18.1,21.9,forest, (900,500,1000), (900,480,880)),
- (21.9,25.7,forest, (1150,420,760), (1150,400,660)),
- (25.7,31.0,lake,   (800,545,900),  (800,512,1024)),
+ (18.1,21.1,forest, (900,500,1000), (900,480,880)),
+ (21.1,24.1,forest, (1150,420,760), (1150,400,660)),
+ (24.1,29.4,lake,   (800,545,900),  (800,512,1024)),
 ]
 XF = 0.4
 def ease(x): return 0.5 - 0.5*math.cos(math.pi*max(0,min(1,x)))
@@ -37,14 +37,14 @@ cards = [  # (start,end,text,font,y)
  (2.5,5.5,"내면의 소리에\n집중해보세요",f_card,650),
  (5.5,10.9,"들이쉬고",f_card,620),
  (10.9,18.1,"내쉬고",f_card,620),
- (25.7,31.0,"내일도 1분만",f_card,700),
- (29.6,31.0,"저장해 두세요",f_small,810),
+ (24.1,29.4,"내일도 1분만",f_card,700),
+ (28.0,29.4,"저장해 두세요",f_small,810),
 ]
 nums = [(6.9+i,7.9+i,str(i+1)) for i in range(4)] + [(12.1+i,13.1+i,str(6-i)) for i in range(6)]
 subs = [
  (0.0,2.5,"1분, 숨을 쉬어보아요."),
- (5.5,6.9,"들이쉬고."),(10.9,12.1,"내쉬고."),(18.1,21.1,"어깨의 긴장이 이완되고,"),
- (21.1,24.0,"무거웠던 머리가 맑아짐을"),(24.0,25.7,"느껴보세요."),(25.7,31.0,"내일도 1분만,\n내면의 소리를 들어주세요."),
+ (5.5,6.9,"들이쉬고."),(10.9,12.1,"내쉬고."),(18.1,21.1,"답답한 마음은 비우고,"),
+ (21.1,24.1,"내면을 어루만집니다."),(24.1,29.4,"내일도 1분만,\n내면의 소리를 들어주세요."),
 ]
 CX = 520
 import numpy as np
@@ -77,7 +77,7 @@ ff = subprocess.Popen(["ffmpeg","-y","-loglevel","error","-f","rawvideo","-pix_f
     "-s",f"{W}x{H}","-r",str(FPS),"-i","-",
     "-f","lavfi","-t",str(DUR),"-i","anoisesrc=color=brown:amplitude=0.06:sample_rate=48000,lowpass=f=700,volume=0.9",
     "-f","lavfi","-t","13","-i","aevalsrc=0.22*(sin(2*PI*196*t)+0.55*sin(2*PI*529*t)+0.3*sin(2*PI*1013*t)+0.15*sin(2*PI*1720*t))*exp(-t/3.6)*min(1\\,t*60):s=48000",
-    "-filter_complex","[2:a]adelay=10900|10900[b];[1:a][b]amix=inputs=2:normalize=0,afade=t=in:d=0.3,afade=t=out:st=30.4:d=0.6[a]",
+    "-filter_complex","[2:a]adelay=10900|10900[b];[1:a][b]amix=inputs=2:normalize=0,afade=t=in:d=0.3,afade=t=out:st=28.8:d=0.6[a]",
     "-map","0:v","-map","[a]","-c:v","libx264","-preset","medium","-crf","19","-pix_fmt","yuv420p",
     "-c:a","aac","-b:a","160k","-t",str(DUR),"-movflags","+faststart",OUT], stdin=subprocess.PIPE)
 n = int(DUR*FPS)
@@ -91,7 +91,7 @@ for i in range(n):
     elif nxt: im = Image.blend(im, frame_of(nxt[0],t), 0.5-(nxt[0][0]-t)/XF)
     im = Image.composite(BLACK, im, SCRIM)
     im = Image.alpha_composite(im.convert("RGBA"), text_layer(t)).convert("RGB")
-    if i in (0, int(4.0*FPS), int(6.0*FPS), int(9.5*FPS), int(13.5*FPS), int(16.5*FPS), int(19.5*FPS), int(22.5*FPS), int(24.8*FPS), int(27.5*FPS), int(30.5*FPS)):
+    if i in (0, int(4.0*FPS), int(6.0*FPS), int(9.5*FPS), int(13.5*FPS), int(16.5*FPS), int(19.5*FPS), int(22.5*FPS), int(26.0*FPS), int(28.9*FPS)):
         im.save(f"{S}/render/f_{i:03d}.jpg", quality=85)
     ff.stdin.write(im.tobytes())
 ff.stdin.close(); sys.exit(ff.wait())

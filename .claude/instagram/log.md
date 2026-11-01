@@ -4,4 +4,4 @@ Scripts approved for shooting. /ig-audit reads this.
 
 | date | post | pillar | format | hook formula | first line |
 |---|---|---|---|---|---|
-| 2026-11-01 | #1 | Mood | Reel ~31s | #2 Negative Command | 1분, 숨을 쉬어보아요. |
+| 2026-11-01 | #1 | Mood | Reel ~29s | #2 Negative Command | 1분, 숨을 쉬어보아요. |
