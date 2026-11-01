@@ -7,7 +7,7 @@ Length: ~31s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.
 ## Voiceover
 ```
 1분, 숨을 쉬어보아요.
-고치는 건 내일 해도 돼요.
+내면의 소리에 집중해보세요.
 들이쉬고.
         (4초 들숨)
 내쉬고.
