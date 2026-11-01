@@ -27,7 +27,7 @@ row goes one tone.
 
 | # | pillar | format | hook formula | spoken / on-screen hook | angle |
 |---|---|---|---|---|---|
-| 1 | Mood | Reel ~24s | #2 Negative Command | "10초만, 숨 쉬어요." / 피부 말고, 숨부터 | 새벽 호숫가에서 10초 호흡(4초 들숨, 6초 날숨)을 함께. 싱잉볼 한 번. 끝을 첫 프레임과 맞춰 루프. Script: `drafts/01-mood-reel-10s-breath.md` |
+| 1 | Mood | Reel ~24s | #2 Negative Command | "10초만, 숨 쉬어요." / 마음부터 피어나는 아름다움 | 새벽 호숫가에서 10초 호흡(4초 들숨, 6초 날숨)을 함께. 싱잉볼 한 번. 끝을 첫 프레임과 맞춰 루프. Script: `drafts/01-mood-reel-10s-breath.md` |
 | 2 | Ritual | Reel 25–30s | #10 If This, Then Watch | "아침에 얼굴이 무겁게 느껴진다면, 이 3분." / 무거운 아침, 3분 | 손바닥 비벼 온기 → 이마 → 광대 → 턱선 → 목. 동작마다 숨 한 번 |
 | 3 | Botanical | Carousel 6장 | #3 Nobody Tells You | "병풀이 왜 '호랑이 풀'로 불리는지, 아무도 안 알려줘요." / 호랑이 풀의 이야기 | 이름의 유래(전설로 소개) → 원산지 → 대표 성분(마데카소사이드, 아시아티코사이드) → 어떤 피부가 찾는지 → 출처 |
 | 4 | Ritual | Reel 20s | #7 Wrong Way, Right Way | "얼굴 마사지, 힘부터 빼세요. 당신 잘못이 아니에요." / 힘 빼는 게 먼저 | 세게 문지르는 손 vs 손바닥 전체로 감싸는 손. 압이 아니라 온기 |
