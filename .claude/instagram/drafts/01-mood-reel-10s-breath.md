@@ -1,4 +1,4 @@
-# #1 Mood Reel: 10초 호흡 (draft)
+# #1 Mood Reel: 1분 호흡 (draft)
 
 Hook: #2 Negative Command. English stand-in "Stop fixing your skin. Ten seconds,
 just breathe." scored 84.4 STRONG (hookscore.py is English-only).
@@ -6,7 +6,7 @@ Length: ~31s at ~3.8 syllables/s narration. VO: warm low male, 해요체 (voice.
 
 ## Voiceover
 ```
-10초만, 숨 쉬어요.
+1분, 숨을 쉬어보아요.
 고치는 건 내일 해도 돼요.
 들이쉬고.
         (4초 들숨)
@@ -36,9 +36,9 @@ Burn in captions for every spoken line.
 
 ## Caption (Job A)
 ```
-내일 아침, 10초만 숨부터. 저장해 두고 따라 해 보세요.
+내일 아침, 1분만 숨부터. 저장해 두고 따라 해 보세요.
 
-4초 들이쉬고, 6초 내쉬기.
+4초 들이쉬고, 6초 내쉬기. 여섯 번이면 1분이에요.
 내쉬는 숨을 조금 더 길게. 그게 전부예요.
 
 거울 앞에서 무언가를 고치기 전에, 이 짧은 호흡 명상으로 아침 루틴을 시작해 보세요. 스킨케어 루틴의 첫 단계가 숨이어도 괜찮아요.
