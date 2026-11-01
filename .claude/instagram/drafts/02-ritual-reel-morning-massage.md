@@ -8,6 +8,13 @@ Movement reference: user-supplied YouTube video (not viewable from the cloud
 session; sequence below is a standard morning facial massage, check it against
 the reference).
 
+## Preview version (guide style, rendered)
+
+`render/reel02.py` renders a 31.4s preview without hand footage: dawn-lake hook and
+ending (same look as #1), muse face in an arch frame on warm linen, gold light
+strokes tracing each move, step labels 01–06, a chime at each step. Swap in the
+generated hand-massage clips later with the same timeline.
+
 ## Voiceover
 ```
 문지르지 말고, 감싸 주세요.
