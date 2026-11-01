@@ -76,3 +76,22 @@ wellness photography, shallow depth of field, film grain, no text, no logo.
 | 0:19 | fingers along the jawline from the chin, profile view | fingers glide along the jaw to below the ears |
 | 0:22 | flat fingers below the ears on the side of the neck, profile view | fingers sweep down the neck to the collarbone |
 | 0:26 | hands resting on her collarbones, eyes closed, gentle smile, front view | a slow breath, a small smile |
+
+## Caption (Job A)
+```
+내일 아침 거울 앞에서 따라 하려면, 저장해 두세요. 3분이면 되는 6동작 얼굴 마사지예요.
+
+문지르지 말고, 손바닥으로 감싸 주세요.
+01 온기 - 손바닥을 비벼 얼굴을 감싸고 숨 한 번
+02 이마 - 가운데서 바깥으로
+03 눈가 - 약지로, 아주 가볍게
+04 광대 - 코 옆에서 귀 앞까지
+05 턱선 - 턱 끝에서 귀 밑으로
+06 목 - 귀 밑에서 쇄골까지
+
+동작마다 세 번, 숨과 함께. 힘은 빼고 온기만 남겨요.
+세안 후 아침 루틴에 끼워 넣기 좋은 셀프 얼굴 마사지예요.
+
+#얼굴마사지 #셀프마사지 #아침루틴
+```
+Search terms: 얼굴 마사지 (line 1), 셀프 얼굴 마사지, 아침 루틴. No link, no first comment needed.
