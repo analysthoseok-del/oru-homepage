@@ -127,6 +127,7 @@ export default function BrandPage() {
       >
         <AmbientVideo
           src={FILM.video}
+          poster={FILM.poster}
           label={FILM.label}
           className="absolute inset-0 h-full w-full object-cover"
         />

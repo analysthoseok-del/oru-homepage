@@ -73,8 +73,11 @@ export const PHILOSOPHY = {
 };
 
 export const FILM = {
-  video: "/banners/banner-3.mp4",
-  label: "물결이 번지는 브랜드 영상",
+  /** 원본(banners/banner-3.mp4)을 절반 속도로 늦추고 끝과 처음을 이어 붙인 웹용 반복 영상 */
+  video: "/brand/water.mp4",
+  /** 영상이 뜨기 전, 그리고 '동작 줄이기' 설정에서 보이는 정지 화면 */
+  poster: "/brand/water-poster.jpg",
+  label: "잔잔하게 일렁이는 물결 영상",
   quote: ["잔물결이 가라앉듯,", "하루의 끝을 고요하게"],
 };
 
