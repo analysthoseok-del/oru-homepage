@@ -25,7 +25,7 @@ export const LOGO = {
 };
 
 export const HERO = {
-  /** 원본(banners/banner-3.mp4)에서 박혀 있던 글자를 지우고, 절반 속도로 늦춰 끝과 처음을 이어 붙인 원본 해상도 반복 영상 (9초, 약 7MB) */
+  /** 4K 로 화질을 높인 물결 영상에서 박혀 있던 글자를 지우고, 절반 속도로 늦춰 끝과 처음을 이어 붙인 반복 영상 (2560px, 9초, 약 8.5MB) */
   video: "/brand/water.mp4",
   /** 영상이 뜨기 전, 그리고 '동작 줄이기' 설정에서 보이는 정지 화면 */
   poster: "/brand/water-poster.jpg",
