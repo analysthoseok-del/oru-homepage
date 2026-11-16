@@ -23,7 +23,7 @@ Figma 시안(게시물 조회 / 목록 / 규칙 정의 / 게시물 작성·수�
 | --- | --- |
 | `src/lib/brand.ts` | 섹션별 문구·이미지·메뉴·푸터 사업자 정보 — 내용 수정은 이 파일만 |
 | `src/app/(brand)/layout.tsx` | 브랜드 사이트 헤더/푸터 |
-| `src/app/(brand)/brand/page.tsx` | 섹션 마크업 (Hero → About → Story → Philosophy → Film → Ritual → Sanctuary) |
+| `src/app/(brand)/brand/page.tsx` | 섹션 마크업 (Hero(물결 영상) → About → Story → Philosophy → Ritual → Sanctuary) |
 | `src/components/brand/` | 헤더, 푸터, 지연 로딩 배경 영상 |
 
 게시판 화면의 사이드바 셸은 `src/app/(board)/layout.tsx` 로 옮겼고, URL 은 그대로입니다.

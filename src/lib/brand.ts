@@ -16,12 +16,15 @@ export const BRAND_NAV = [
 ] as const;
 
 export const HERO = {
-  image: "/banners/banner-1.webp",
-  width: 1198,
-  height: 592,
-  /** 이미지 안에 카피가 들어 있으므로, 같은 내용을 스크린리더용 제목으로도 제공한다. */
-  heading: "스킨케어를 넘어, 오롯이 나에게 집중하는 치유의 시간",
-  alt: "안개가 내려앉은 지리산 남원의 숲 전경",
+  /** 원본(banners/banner-3.mp4)을 절반 속도로 늦추고 끝과 처음을 이어 붙인 웹용 반복 영상 (8초) */
+  video: "/brand/water.mp4",
+  /** 영상이 뜨기 전, 그리고 '동작 줄이기' 설정에서 보이는 정지 화면 */
+  poster: "/brand/water-poster.jpg",
+  label: "잔잔하게 일렁이는 물결 영상",
+  /** 영상 가운데에 "ORU · Inner Light, Pure Skin" 로고가 들어 있어 화면에는 큰 제목을 따로 얹지 않는다. 스크린리더용 제목. */
+  heading: "Oru — Inner Light, Pure Skin",
+  keywords: "Longevity · Well-aging · Emotional Wellness",
+  place: "지리산 · Namwon Sanctuary",
 };
 
 export const ABOUT = {
@@ -72,15 +75,6 @@ export const PHILOSOPHY = {
   ],
 };
 
-export const FILM = {
-  /** 원본(banners/banner-3.mp4)을 절반 속도로 늦추고 끝과 처음을 이어 붙인 웹용 반복 영상 */
-  video: "/brand/water.mp4",
-  /** 영상이 뜨기 전, 그리고 '동작 줄이기' 설정에서 보이는 정지 화면 */
-  poster: "/brand/water-poster.jpg",
-  label: "잔잔하게 일렁이는 물결 영상",
-  quote: ["잔물결이 가라앉듯,", "하루의 끝을 고요하게"],
-};
-
 export const RITUAL = {
   eyebrow: "The Oru Ritual",
   title: ["나에게 집중하는", "세 번의 호흡"],
@@ -107,6 +101,9 @@ export const RITUAL = {
 };
 
 export const SANCTUARY = {
+  /** 카피가 들어간 배너 원본에서 윗부분(능선과 안개)만 잘라 쓴다. */
+  image: "/banners/banner-1.webp",
+  alt: "안개가 내려앉은 지리산 남원의 능선",
   eyebrow: "Namwon Sanctuary",
   title: ["지리산,", "남원의 숲에서"],
   body: [

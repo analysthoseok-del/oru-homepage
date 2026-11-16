@@ -3,7 +3,6 @@ import Image from "next/image";
 import { AmbientVideo } from "@/components/brand/AmbientVideo";
 import {
   ABOUT,
-  FILM,
   HERO,
   PHILOSOPHY,
   RITUAL,
@@ -33,20 +32,28 @@ function Lines({ lines }: { lines: readonly string[] }) {
 export default function BrandPage() {
   return (
     <>
-      {/* 1. Hero — 카피가 들어간 키 비주얼. 잘리지 않도록 원본 비율을 그대로 쓴다. */}
-      <section aria-labelledby="hero-heading" className="bg-oru-forest">
+      {/* 1. Hero — 첫 화면을 채우는 물결 영상. 로고는 영상 안에 들어 있다. */}
+      <section
+        aria-labelledby="hero-heading"
+        className="relative flex h-[calc(100svh-64px)] min-h-[480px] items-end overflow-hidden bg-oru-forest text-white md:h-[calc(100svh-72px)]"
+      >
         <h1 id="hero-heading" className="sr-only">
           {HERO.heading}
         </h1>
-        <Image
-          src={HERO.image}
-          alt={HERO.alt}
-          width={HERO.width}
-          height={HERO.height}
-          preload
-          sizes="100vw"
-          className="mx-auto h-auto w-full max-w-[1920px]"
+        <AmbientVideo
+          src={HERO.video}
+          poster={HERO.poster}
+          label={HERO.label}
+          className="absolute inset-0 h-full w-full object-cover"
         />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-oru-ink/60 via-oru-ink/15 to-oru-ink/15"
+        />
+        <div className="relative mx-auto flex w-full max-w-[1320px] flex-col items-center gap-3 px-5 pb-10 text-center text-[12px] tracking-[0.1em] text-white/90 md:flex-row md:justify-between md:px-10 md:pb-12 md:text-[14px]">
+          <p>{HERO.keywords}</p>
+          <p>{HERO.place}</p>
+        </div>
       </section>
 
       {/* 2. About — 브랜드 선언문 */}
@@ -120,24 +127,7 @@ export default function BrandPage() {
         </ol>
       </section>
 
-      {/* 5. Film — 풀블리드 영상 + 한 줄 카피 */}
-      <section
-        aria-label={FILM.label}
-        className="relative flex h-[60vh] min-h-[360px] items-center justify-center overflow-hidden bg-oru-forest md:h-[80vh]"
-      >
-        <AmbientVideo
-          src={FILM.video}
-          poster={FILM.poster}
-          label={FILM.label}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-oru-ink/35" />
-        <p className="relative px-5 text-center text-[22px] font-light leading-[1.6] text-white md:text-[34px]">
-          <Lines lines={FILM.quote} />
-        </p>
-      </section>
-
-      {/* 6. Ritual — 사용 리추얼 3단계 */}
+      {/* 5. Ritual — 사용 리추얼 3단계 */}
       <section id="ritual" className={`${SECTION} bg-oru-stone/50`}>
         <div className="mx-auto grid max-w-[1320px] gap-14 px-5 py-24 md:grid-cols-[1fr_1.4fr] md:gap-20 md:px-10 md:py-40">
           <div>
@@ -170,11 +160,27 @@ export default function BrandPage() {
         </div>
       </section>
 
-      {/* 7. Sanctuary — 브랜드의 근원 */}
+      {/* 6. Sanctuary — 브랜드의 근원. 숲 이미지 띠 + 텍스트 */}
       <section
         id="sanctuary"
         className={`${SECTION} bg-oru-forest text-oru-sand`}
       >
+        {/* 원본 아래쪽에는 카피가 박혀 있어, 위 43%(능선과 안개)만 보이도록 잘라 낸다. */}
+        <div className="relative aspect-[2/1] w-full overflow-hidden md:aspect-[1198/255]">
+          <div className="absolute inset-x-0 top-0 h-[232%]">
+            <Image
+              src={SANCTUARY.image}
+              alt={SANCTUARY.alt}
+              fill
+              sizes="(min-width: 768px) 100vw, 240vw"
+              className="object-cover"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-oru-forest to-transparent"
+          />
+        </div>
         <div className="mx-auto max-w-[760px] px-5 py-24 text-center md:py-40">
           <p className={EYEBROW}>{SANCTUARY.eyebrow}</p>
           <h2 className={`${TITLE} mt-6`}>
