@@ -109,9 +109,9 @@ export const RITUAL = {
 };
 
 export const SANCTUARY = {
-  /** 카피가 들어간 배너 원본에서 윗부분(능선과 안개)만 잘라 쓴다. */
-  image: "/banners/banner-1.webp",
-  alt: "안개가 내려앉은 지리산 남원의 능선",
+  /** 배너 원본(banners/banner-1.webp)에서 박혀 있던 카피를 지운 숲 이미지 */
+  image: "/brand/forest.webp",
+  alt: "안개가 내려앉은 지리산 남원의 숲 전경",
   eyebrow: "Namwon Sanctuary",
   title: ["지리산,", "남원의 숲에서"],
   body: [

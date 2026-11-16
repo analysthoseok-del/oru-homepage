@@ -174,33 +174,27 @@ export default function BrandPage() {
         </div>
       </section>
 
-      {/* 6. Sanctuary — 브랜드의 근원. 숲 이미지 띠 + 텍스트 */}
+      {/* 6. Sanctuary — 브랜드의 근원. 숲 이미지를 배경으로 깔고 그 위에 글 */}
       <section
         id="sanctuary"
-        className={`${SECTION} bg-oru-forest text-oru-sand`}
+        className={`${SECTION} relative overflow-hidden bg-oru-forest text-white`}
       >
-        {/* 원본 아래쪽에는 카피가 박혀 있어, 위 43%(능선과 안개)만 보이도록 잘라 낸다. */}
-        <div className="relative aspect-[2/1] w-full overflow-hidden md:aspect-[1198/255]">
-          <div className="absolute inset-x-0 top-0 h-[232%]">
-            <Image
-              src={SANCTUARY.image}
-              alt={SANCTUARY.alt}
-              fill
-              sizes="(min-width: 768px) 100vw, 240vw"
-              className="object-cover"
-            />
-          </div>
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-oru-forest to-transparent"
-          />
-        </div>
-        <div className="mx-auto max-w-[760px] px-5 py-24 text-center md:py-40">
-          <p className={EYEBROW}>{SANCTUARY.eyebrow}</p>
+        <Image
+          src={SANCTUARY.image}
+          alt={SANCTUARY.alt}
+          fill
+          sizes="(min-width: 768px) 100vw, 200vw"
+          className="object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-oru-ink/45" />
+        <div className="relative mx-auto flex min-h-[70vh] max-w-[760px] flex-col items-center justify-center px-5 py-24 text-center md:min-h-[88vh] md:py-40">
+          <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-[#e6d3a3] md:text-[12px]">
+            {SANCTUARY.eyebrow}
+          </p>
           <h2 className={`${TITLE} mt-6`}>
             <Lines lines={SANCTUARY.title} />
           </h2>
-          <div className="mt-10 flex flex-col gap-5 text-[15px] leading-[1.9] text-oru-sand/75 md:text-[16px]">
+          <div className="mt-10 flex flex-col gap-5 text-[15px] leading-[1.9] text-white/90 md:text-[16px]">
             {SANCTUARY.body.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
