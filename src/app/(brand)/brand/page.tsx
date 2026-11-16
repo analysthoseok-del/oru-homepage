@@ -88,14 +88,27 @@ export default function BrandPage() {
       {/* 3. Story — 이미지 + 텍스트 2단 */}
       <section id="story" className={`${SECTION} bg-white/60`}>
         <div className="mx-auto grid max-w-[1320px] items-center gap-10 px-5 py-20 md:grid-cols-2 md:gap-20 md:px-10 md:py-32">
-          <Image
-            src={STORY.image}
-            alt={STORY.alt}
-            width={STORY.width}
-            height={STORY.height}
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="h-auto w-full"
-          />
+          <div className="relative overflow-hidden">
+            <Image
+              src={STORY.image}
+              alt={STORY.alt}
+              width={STORY.width}
+              height={STORY.height}
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="oru-breathe h-auto w-full saturate-[1.08] contrast-[1.04]"
+            />
+            <div aria-hidden="true" className="oru-light" />
+            <span aria-hidden="true" className="oru-ripple" />
+            <span
+              aria-hidden="true"
+              className="oru-ripple"
+              style={{ animationDelay: "4.5s" }}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 shadow-[inset_0_0_80px_rgba(60,45,25,0.22)]"
+            />
+          </div>
           <div className="md:max-w-[480px]">
             <p className={EYEBROW}>{STORY.eyebrow}</p>
             <h2 className={`${TITLE} mt-6`}>
