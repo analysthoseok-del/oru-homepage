@@ -72,7 +72,7 @@ export const PHILOSOPHY = {
     {
       index: "02",
       name: "Ritual",
-      label: "매일 반복하는 작은 의식",
+      label: "나를 위한 작은 의식",
       body: "한 번의 특별한 관리보다 Daily Routine을 믿습니다. 나에게 집중하는 일상의 순간, 피부의 안식과 리듬을 만듭니다.",
     },
     {
