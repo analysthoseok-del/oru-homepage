@@ -103,7 +103,7 @@ body {
     opacity: 0;
   }
   20% {
-    opacity: 0.9;
+    opacity: 1;
   }
   100% {
     transform: translate(-50%, -50%) scale(1.5);
@@ -132,9 +132,9 @@ body {
   width: 78%;
   aspect-ratio: 3.2 / 1;
   border-radius: 50%;
-  border: 5px solid rgb(255 250 238 / 0.9);
-  filter: blur(7px);
-  mix-blend-mode: soft-light;
+  border: 9px solid rgb(255 250 238 / 0.95);
+  filter: blur(6px);
+  mix-blend-mode: overlay;
   opacity: 0;
   animation: oru-ripple 9s ease-out infinite;
 }

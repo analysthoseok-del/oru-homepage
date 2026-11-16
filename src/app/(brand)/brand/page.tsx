@@ -89,20 +89,23 @@ export default function BrandPage() {
       <section id="story" className={`${SECTION} bg-white/60`}>
         <div className="mx-auto grid max-w-[1320px] items-center gap-10 px-5 py-20 md:grid-cols-2 md:gap-20 md:px-10 md:py-32">
           <div className="relative overflow-hidden">
-            <Image
-              src={STORY.image}
-              alt={STORY.alt}
-              width={STORY.width}
-              height={STORY.height}
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="oru-breathe h-auto w-full saturate-[1.08] contrast-[1.04]"
+            <AmbientVideo
+              src={STORY.video}
+              poster={STORY.image}
+              label={STORY.alt}
+              className="oru-breathe aspect-[598/394] w-full object-cover saturate-[1.08] contrast-[1.04]"
             />
             <div aria-hidden="true" className="oru-light" />
             <span aria-hidden="true" className="oru-ripple" />
             <span
               aria-hidden="true"
               className="oru-ripple"
-              style={{ animationDelay: "4.5s" }}
+              style={{ animationDelay: "3s" }}
+            />
+            <span
+              aria-hidden="true"
+              className="oru-ripple"
+              style={{ animationDelay: "6s" }}
             />
             <div
               aria-hidden="true"
