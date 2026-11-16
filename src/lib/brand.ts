@@ -85,25 +85,25 @@ export const PHILOSOPHY = {
 
 export const RITUAL = {
   eyebrow: "The Oru Ritual",
-  title: ["나에게 집중하는", "세 번의 호흡"],
+  title: ["나에게 집중하는", "세 단계의 리추얼"],
   steps: [
     {
       index: "01",
-      name: "Pause",
-      label: "멈춤",
-      body: "손을 씻고 조명을 낮춥니다. 하루를 내려놓는 것으로 리추얼을 시작합니다.",
+      name: "Release",
+      label: "비움",
+      body: "하루 동안 쌓인 것을 먼저 덜어냅니다. 피부 위의 노폐물도, 마음에 남은 긴장도 천천히 비워 냅니다.",
     },
     {
       index: "02",
-      name: "Breathe",
-      label: "숨",
-      body: "손바닥에 제형을 덜어 온기를 더하고, 향과 함께 천천히 세 번 호흡합니다.",
+      name: "Rest",
+      label: "휴식",
+      body: "아무것도 더하지 않는 시간을 둡니다. 호흡을 고르고, 피부가 스스로 숨 쉴 여백을 줍니다.",
     },
     {
       index: "03",
-      name: "Absorb",
-      label: "스밈",
-      body: "얼굴 안쪽에서 바깥으로 감싸듯 눌러 줍니다. 서두르지 않고 스며드는 시간을 기다립니다.",
+      name: "Replenish",
+      label: "채움",
+      body: "비워 낸 자리에 꼭 필요한 것만 채웁니다. 손끝의 온기로 감싸듯 눌러, 깊이 스며들기를 기다립니다.",
     },
   ],
 };
