@@ -46,7 +46,7 @@ export default function BrandPage() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-oru-ink/60 via-oru-ink/20 to-oru-ink/20"
+          className="absolute inset-0 bg-gradient-to-t from-oru-ink/50 via-oru-ink/10 to-oru-ink/10"
         />
         <div className="relative flex flex-1 flex-col items-center justify-center px-5 text-center">
           <h1 id="hero-heading">
@@ -64,10 +64,9 @@ export default function BrandPage() {
             {HERO.tagline}
           </p>
         </div>
-        <div className="relative mx-auto flex w-full max-w-[1320px] flex-col items-center gap-2 px-5 pb-10 text-center font-serif text-[15px] tracking-[0.04em] text-white md:flex-row md:justify-between md:px-10 md:pb-12 md:text-[18px]">
-          <p>{HERO.keywords}</p>
-          <p>{HERO.place}</p>
-        </div>
+        <p className="relative px-5 pb-10 text-center font-serif text-[15px] tracking-[0.04em] text-white md:pb-12 md:text-[18px]">
+          {HERO.keywords}
+        </p>
       </section>
 
       {/* 2. About — 브랜드 선언문 */}
