@@ -17,7 +17,7 @@ export function SiteFooter() {
             className="h-10 w-auto"
           />
           <p className="mt-4 text-[12px] uppercase tracking-[0.22em] text-oru-sand/60">
-            Longevity · Well-aging · Emotional Wellness
+            Longevity · Ritual · Emotional Wellness
           </p>
         </div>
 

@@ -3,7 +3,7 @@
  * 카피·순서·이미지는 이 파일만 고치면 된다. 섹션 마크업은 `app/(brand)/brand/page.tsx`.
  *
  * 1차 시안: 문구는 배너에 이미 쓰인 브랜드 키워드
- * (Skincare Redefined / Longevity · Well-aging · Emotional Wellness / 지리산 · Namwon Sanctuary)를
+ * (Skincare Redefined / Longevity · Ritual · Emotional Wellness / 지리산 · Namwon Sanctuary)를
  * 풀어 쓴 초안이며, 확정 카피가 아니다.
  */
 
@@ -31,7 +31,7 @@ export const HERO = {
   poster: "/brand/water-poster.jpg",
   label: "잔잔하게 일렁이는 물결 영상",
   tagline: "Inner Light, Pure Skin",
-  keywords: "Longevity · Well-aging · Emotional Wellness",
+  keywords: "Longevity · Ritual · Emotional Wellness",
   place: "지리산 · Namwon Sanctuary",
 };
 
@@ -70,9 +70,9 @@ export const PHILOSOPHY = {
     },
     {
       index: "02",
-      name: "Well-aging",
-      label: "나답게 흐르는 시간",
-      body: "시간을 거스르기보다 잘 지나가는 법을 고민합니다. 지금의 나에게 가장 편안한 결을 찾습니다.",
+      name: "Ritual",
+      label: "매일 반복하는 작은 의식",
+      body: "한 번의 특별한 관리보다 매일의 반복을 믿습니다. 같은 자리, 같은 순서로 나를 돌보는 몇 분이 피부의 리듬을 만듭니다.",
     },
     {
       index: "03",
