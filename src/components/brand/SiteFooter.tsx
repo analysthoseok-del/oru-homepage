@@ -1,4 +1,5 @@
-import { BRAND_NAV, COMPANY } from "@/lib/brand";
+import Image from "next/image";
+import { BRAND_NAV, COMPANY, LOGO } from "@/lib/brand";
 
 export function SiteFooter() {
   const company = COMPANY.filter((item) => item.value !== null);
@@ -7,7 +8,14 @@ export function SiteFooter() {
     <footer className="bg-oru-ink text-oru-sand">
       <div className="mx-auto flex max-w-[1320px] flex-col gap-12 px-5 py-16 md:flex-row md:justify-between md:px-10 md:py-20">
         <div>
-          <p className="text-[26px] font-light tracking-[0.42em]">ORU</p>
+          <Image
+            src={LOGO.white}
+            alt={LOGO.alt}
+            width={LOGO.width}
+            height={LOGO.height}
+            sizes="100px"
+            className="h-10 w-auto"
+          />
           <p className="mt-4 text-[12px] uppercase tracking-[0.22em] text-oru-sand/60">
             Longevity · Well-aging · Emotional Wellness
           </p>

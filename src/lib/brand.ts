@@ -15,14 +15,22 @@ export const BRAND_NAV = [
   { href: "#sanctuary", label: "Sanctuary" },
 ] as const;
 
+/** 로고 워드마크. 원본 로고 파일에서 글자만 따 흰색/짙은색 두 벌로 만들었다. */
+export const LOGO = {
+  white: "/brand/oru-logo-white.png",
+  ink: "/brand/oru-logo-ink.png",
+  width: 622,
+  height: 263,
+  alt: "Oru",
+};
+
 export const HERO = {
-  /** 원본(banners/banner-3.mp4)을 절반 속도로 늦추고 끝과 처음을 이어 붙인 웹용 반복 영상 (8초) */
+  /** 원본(banners/banner-3.mp4)에서 박혀 있던 글자를 지우고, 절반 속도로 늦춰 끝과 처음을 이어 붙인 웹용 반복 영상 (9초) */
   video: "/brand/water.mp4",
   /** 영상이 뜨기 전, 그리고 '동작 줄이기' 설정에서 보이는 정지 화면 */
   poster: "/brand/water-poster.jpg",
   label: "잔잔하게 일렁이는 물결 영상",
-  /** 영상 가운데에 "ORU · Inner Light, Pure Skin" 로고가 들어 있어 화면에는 큰 제목을 따로 얹지 않는다. 스크린리더용 제목. */
-  heading: "Oru — Inner Light, Pure Skin",
+  tagline: "Inner Light, Pure Skin",
   keywords: "Longevity · Well-aging · Emotional Wellness",
   place: "지리산 · Namwon Sanctuary",
 };

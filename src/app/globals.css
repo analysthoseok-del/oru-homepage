@@ -35,6 +35,9 @@
   /* Font family — SUIT (https://sun.fo/suit/) */
   --font-sans: var(--font-suit), "SUIT Variable", "Apple SD Gothic Neo",
     system-ui, sans-serif;
+
+  /* 로고 서체와 같은 계열 — 브랜드 사이트 영문 표제용 */
+  --font-serif: var(--font-garamond), "EB Garamond", Garamond, Georgia, serif;
 }
 
 :root {

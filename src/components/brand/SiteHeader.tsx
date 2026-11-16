@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { BRAND_NAV } from "@/lib/brand";
+import { BRAND_NAV, LOGO } from "@/lib/brand";
 
 /** 브랜드 사이트 GNB — 로고 + 섹션 내비게이션. 좁은 화면에서는 펼침 메뉴로 바뀐다. */
 export function SiteHeader() {
@@ -11,12 +12,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-oru-stone bg-oru-sand/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1320px] items-center justify-between px-5 md:h-[72px] md:px-10">
-        <Link
-          href="/brand"
-          aria-label="Oru 브랜드 홈"
-          className="text-[22px] font-light tracking-[0.42em] text-oru-ink"
-        >
-          ORU
+        <Link href="/brand" aria-label="Oru 브랜드 홈">
+          <Image
+            src={LOGO.ink}
+            alt=""
+            width={LOGO.width}
+            height={LOGO.height}
+            sizes="80px"
+            className="h-7 w-auto md:h-8"
+          />
         </Link>
 
         <nav aria-label="브랜드 메뉴" className="hidden md:block">

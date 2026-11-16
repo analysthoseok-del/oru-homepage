@@ -4,6 +4,7 @@ import { AmbientVideo } from "@/components/brand/AmbientVideo";
 import {
   ABOUT,
   HERO,
+  LOGO,
   PHILOSOPHY,
   RITUAL,
   SANCTUARY,
@@ -32,14 +33,11 @@ function Lines({ lines }: { lines: readonly string[] }) {
 export default function BrandPage() {
   return (
     <>
-      {/* 1. Hero — 첫 화면을 채우는 물결 영상. 로고는 영상 안에 들어 있다. */}
+      {/* 1. Hero — 첫 화면을 채우는 물결 영상 위에 흰색 로고 */}
       <section
         aria-labelledby="hero-heading"
-        className="relative flex h-[calc(100svh-64px)] min-h-[480px] items-end overflow-hidden bg-oru-forest text-white md:h-[calc(100svh-72px)]"
+        className="relative flex h-[calc(100svh-64px)] min-h-[480px] flex-col overflow-hidden bg-oru-forest text-white md:h-[calc(100svh-72px)]"
       >
-        <h1 id="hero-heading" className="sr-only">
-          {HERO.heading}
-        </h1>
         <AmbientVideo
           src={HERO.video}
           poster={HERO.poster}
@@ -48,9 +46,25 @@ export default function BrandPage() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-oru-ink/60 via-oru-ink/15 to-oru-ink/15"
+          className="absolute inset-0 bg-gradient-to-t from-oru-ink/60 via-oru-ink/20 to-oru-ink/20"
         />
-        <div className="relative mx-auto flex w-full max-w-[1320px] flex-col items-center gap-3 px-5 pb-10 text-center text-[12px] tracking-[0.1em] text-white/90 md:flex-row md:justify-between md:px-10 md:pb-12 md:text-[14px]">
+        <div className="relative flex flex-1 flex-col items-center justify-center px-5 text-center">
+          <h1 id="hero-heading">
+            <Image
+              src={LOGO.white}
+              alt={LOGO.alt}
+              width={LOGO.width}
+              height={LOGO.height}
+              preload
+              sizes="(min-width: 768px) 340px, 220px"
+              className="h-auto w-[220px] md:w-[340px]"
+            />
+          </h1>
+          <p className="mt-5 font-serif text-[20px] tracking-[0.02em] md:mt-7 md:text-[30px]">
+            {HERO.tagline}
+          </p>
+        </div>
+        <div className="relative mx-auto flex w-full max-w-[1320px] flex-col items-center gap-2 px-5 pb-10 text-center font-serif text-[15px] tracking-[0.04em] text-white md:flex-row md:justify-between md:px-10 md:pb-12 md:text-[18px]">
           <p>{HERO.keywords}</p>
           <p>{HERO.place}</p>
         </div>
@@ -104,7 +118,7 @@ export default function BrandPage() {
       >
         <div className="text-center">
           <p className={EYEBROW}>{PHILOSOPHY.eyebrow}</p>
-          <h2 className="mt-6 text-[26px] font-light uppercase tracking-[0.2em] md:text-[36px]">
+          <h2 className="mt-6 font-serif text-[32px] tracking-[0.01em] md:text-[48px]">
             {PHILOSOPHY.title}
           </h2>
           <p className={`${BODY} mt-6`}>{PHILOSOPHY.lead}</p>
@@ -115,7 +129,7 @@ export default function BrandPage() {
               <p className="text-[12px] tracking-[0.2em] text-oru-moss">
                 {pillar.index}
               </p>
-              <h3 className="mt-5 text-[20px] font-light tracking-[0.06em] md:text-[24px]">
+              <h3 className="mt-5 font-serif text-[24px] tracking-normal md:text-[30px]">
                 {pillar.name}
               </h3>
               <p className="mt-2 text-[14px] font-semibold text-oru-forest">

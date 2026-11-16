@@ -10,6 +10,14 @@ const suit = localFont({
   weight: "100 900",
 });
 
+/** EB Garamond — Oru 로고와 같은 계열의 세리프. 브랜드 사이트의 영문 표제에 쓴다. (OFL) */
+const garamond = localFont({
+  src: "../assets/fonts/EBGaramond-Variable.woff2",
+  variable: "--font-garamond",
+  display: "swap",
+  weight: "400 800",
+});
+
 export const metadata: Metadata = {
   title: "TALKR 게시판",
   description: "TALKR 게시판 — 게시글 작성/조회/수정/삭제",
@@ -21,7 +29,7 @@ export const metadata: Metadata = {
  */
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ko" className={`${suit.variable} h-full scroll-smooth`}>
+    <html lang="ko" className={`${suit.variable} ${garamond.variable} h-full scroll-smooth`}>
       <body className="min-h-full bg-bg-deep">{children}</body>
     </html>
   );
