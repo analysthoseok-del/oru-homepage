@@ -15,6 +15,19 @@ Figma 시안(게시물 조회 / 목록 / 규칙 정의 / 게시물 작성·수�
 | API 계층 | Next.js Route Handlers | 서버에서 GraphQL 호출 (브라우저 CORS 없음) |
 | 대체 백엔드 | Postgres(`pg`) / 로컬 파일 | `BOARD_BACKEND` 로 전환 |
 
+## Oru 브랜드 페이지 (`/brand`)
+
+게시판과 별도의 라우트 그룹 `(brand)` 로 구성된 브랜드 소개 페이지입니다. (1차 시안)
+
+| 위치 | 역할 |
+| --- | --- |
+| `src/lib/brand.ts` | 섹션별 문구·이미지·메뉴·푸터 사업자 정보 — 내용 수정은 이 파일만 |
+| `src/app/(brand)/layout.tsx` | 브랜드 사이트 헤더/푸터 |
+| `src/app/(brand)/brand/page.tsx` | 섹션 마크업 (Hero → About → Story → Philosophy → Film → Ritual → Sanctuary) |
+| `src/components/brand/` | 헤더, 푸터, 지연 로딩 배경 영상 |
+
+게시판 화면의 사이드바 셸은 `src/app/(board)/layout.tsx` 로 옮겼고, URL 은 그대로입니다.
+
 ## 실행
 
 ```bash

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Sidebar } from "@/components/layout/Sidebar";
 import "./globals.css";
 
 /** SUIT Variable — https://sun.fo/suit/ (self-host) */
@@ -16,20 +15,14 @@ export const metadata: Metadata = {
   description: "TALKR 게시판 — 게시글 작성/조회/수정/삭제",
 };
 
-/** 사이드바(메뉴)는 모든 화면이 공유하는 레이아웃 구조 */
+/**
+ * 문서 골격과 폰트만 담당한다.
+ * 화면 틀은 라우트 그룹이 나눠 가진다 — (board): 사이드바 셸, (brand): 브랜드 사이트 헤더/푸터.
+ */
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ko" className={`${suit.variable} h-full`}>
-      <body className="min-h-full bg-bg-deep">
-        <div className="mx-auto min-h-screen w-full max-w-[1280px] px-4 py-6 lg:px-8 lg:py-10">
-          <div className="min-h-[calc(100vh-80px)] rounded-2xl bg-bg p-4 lg:p-8">
-            <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
-              <Sidebar />
-              <main className="min-w-0 flex-1">{children}</main>
-            </div>
-          </div>
-        </div>
-      </body>
+    <html lang="ko" className={`${suit.variable} h-full scroll-smooth`}>
+      <body className="min-h-full bg-bg-deep">{children}</body>
     </html>
   );
 }

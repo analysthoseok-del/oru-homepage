@@ -24,6 +24,14 @@
   --color-bg: #fafafa;
   --color-bg-deep: #f2f2f2;
 
+  /* Oru 브랜드 사이트 (/brand) — 숲과 모래에서 가져온 팔레트 */
+  --color-oru-ink: #1d2620;
+  --color-oru-forest: #2b3b30;
+  --color-oru-moss: #6d7c66;
+  --color-oru-sand: #f5f1e9;
+  --color-oru-stone: #e3dccf;
+  --color-oru-gold: #b2955a;
+
   /* Font family — SUIT (https://sun.fo/suit/) */
   --font-sans: var(--font-suit), "SUIT Variable", "Apple SD Gothic Neo",
     system-ui, sans-serif;
@@ -45,9 +53,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 숫자/영문 자간을 SUIT 기본값에 맞춤 */
-* {
-  letter-spacing: -0.01em;
+/* 숫자/영문 자간을 SUIT 기본값에 맞춤.
+   base 레이어에 두어야 tracking-* 유틸리티로 덮어쓸 수 있다. */
+@layer base {
+  * {
+    letter-spacing: -0.01em;
+  }
 }
 
 /* 파일 인풋은 커스텀 업로드 박스로 대체하므로 시각적으로 숨김 */
