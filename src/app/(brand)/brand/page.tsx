@@ -93,19 +93,7 @@ export default function BrandPage() {
               src={STORY.video}
               poster={STORY.image}
               label={STORY.alt}
-              className="oru-breathe aspect-[598/394] w-full object-cover saturate-[1.08] contrast-[1.04]"
-            />
-            <div aria-hidden="true" className="oru-light" />
-            <span aria-hidden="true" className="oru-ripple" />
-            <span
-              aria-hidden="true"
-              className="oru-ripple"
-              style={{ animationDelay: "3s" }}
-            />
-            <span
-              aria-hidden="true"
-              className="oru-ripple"
-              style={{ animationDelay: "6s" }}
+              className="aspect-[598/394] w-full object-cover saturate-[1.08] contrast-[1.04]"
             />
             <div
               aria-hidden="true"
