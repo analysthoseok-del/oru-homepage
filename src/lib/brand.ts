@@ -44,9 +44,10 @@ export const PRODUCT = {
   ritual: "Ritual #1",
   name: "Multi Bubble Serum",
   tagline: "boost your skin with",
-  image: "/brand/multi-bubble-serum.jpg",
-  width: 1047,
-  height: 2000,
+  /** 제품 사진에서 배경을 걷어 낸 투명 이미지 */
+  image: "/brand/multi-bubble-serum.webp",
+  width: 525,
+  height: 1847,
   alt: "Oru Multi Bubble Serum 150mL 펌프 용기",
   keyActivesLabel: "Key Actives",
   keyActives: [

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { AmbientVideo } from "@/components/brand/AmbientVideo";
+import { RiseOnScroll } from "@/components/brand/RiseOnScroll";
 import {
   ABOUT,
   HERO,
@@ -70,20 +71,42 @@ export default function BrandPage() {
         </p>
       </section>
 
-      {/* Product — 대표 제품. 큰 제품 사진 + 라벨 정보 */}
-      <section id="product" className={`${SECTION} bg-[#e9e4e9]`}>
-        <div className="mx-auto grid max-w-[1320px] items-center gap-12 px-5 py-20 md:grid-cols-2 md:gap-20 md:px-10 md:py-32">
-          <div className="mx-auto w-full max-w-[420px] overflow-hidden">
-            <Image
-              src={PRODUCT.image}
-              alt={PRODUCT.alt}
-              width={PRODUCT.width}
-              height={PRODUCT.height}
-              sizes="(min-width: 768px) 420px, 90vw"
-              className="h-auto w-full"
-            />
+      {/* 2. About — 브랜드 선언문 */}
+      <section
+        id="about"
+        className={`${SECTION} mx-auto max-w-[760px] px-5 py-24 text-center md:py-40`}
+      >
+        <p className={EYEBROW}>{ABOUT.eyebrow}</p>
+        <h2 className={`${TITLE} mt-6`}>
+          <Lines lines={ABOUT.title} />
+        </h2>
+        <div className={`${BODY} mt-10 flex flex-col gap-5`}>
+          {ABOUT.body.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
+      {/* Product — About 에서 아래로 내리면 제품이 떠오른다. 넓은 화면에서는 제품이 고정된 채 정보가 흐른다. */}
+      <section
+        id="product"
+        data-rise-scope=""
+        className={`${SECTION} overflow-x-clip bg-gradient-to-b from-oru-sand via-[#ebe6eb] to-[#dcd6dd]`}
+      >
+        <div className="mx-auto grid max-w-[1320px] gap-10 px-5 md:grid-cols-2 md:gap-20 md:px-10">
+          <div className="flex items-center justify-center pt-16 md:sticky md:top-[72px] md:h-[calc(100svh-72px)] md:pt-0">
+            <RiseOnScroll>
+              <Image
+                src={PRODUCT.image}
+                alt={PRODUCT.alt}
+                width={PRODUCT.width}
+                height={PRODUCT.height}
+                sizes="(min-width: 768px) 260px, 50vw"
+                className="h-auto max-h-[78svh] w-auto max-w-full drop-shadow-[0_30px_40px_rgba(60,50,70,0.28)]"
+              />
+            </RiseOnScroll>
           </div>
-          <div className="md:max-w-[520px]">
+          <div className="pb-24 md:max-w-[520px] md:py-[22vh]">
             <p className={EYEBROW}>{PRODUCT.eyebrow}</p>
             <p className="mt-8 text-[11px] uppercase tracking-[0.32em] text-oru-moss">
               {PRODUCT.ritual}
@@ -144,22 +167,6 @@ export default function BrandPage() {
               {PRODUCT.volume}
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* 2. About — 브랜드 선언문 */}
-      <section
-        id="about"
-        className={`${SECTION} mx-auto max-w-[760px] px-5 py-24 text-center md:py-40`}
-      >
-        <p className={EYEBROW}>{ABOUT.eyebrow}</p>
-        <h2 className={`${TITLE} mt-6`}>
-          <Lines lines={ABOUT.title} />
-        </h2>
-        <div className={`${BODY} mt-10 flex flex-col gap-5`}>
-          {ABOUT.body.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
         </div>
       </section>
 
