@@ -93,7 +93,7 @@ export default function BrandPage() {
               src={STORY.video}
               poster={STORY.image}
               label={STORY.alt}
-              className="aspect-[598/394] w-full object-cover saturate-[1.08] contrast-[1.04]"
+              className="aspect-[3/2] w-full object-cover saturate-[1.08] contrast-[1.04]"
             />
             <div
               aria-hidden="true"
