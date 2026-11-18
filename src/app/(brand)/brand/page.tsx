@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Script from "next/script";
 import { AmbientVideo } from "@/components/brand/AmbientVideo";
 import { RiseOnScroll } from "@/components/brand/RiseOnScroll";
 import {
@@ -35,6 +36,8 @@ function Lines({ lines }: { lines: readonly string[] }) {
 export default function BrandPage() {
   return (
     <>
+      {/* 제품 구간의 거품 애니메이션 (public/brand/foam.js) */}
+      <Script src="/brand/foam.js" strategy="afterInteractive" />
       {/* 1. Hero — 첫 화면을 채우는 물결 영상 위에 흰색 로고 */}
       <section
         aria-labelledby="hero-heading"
@@ -87,15 +90,20 @@ export default function BrandPage() {
         </div>
       </section>
 
-      {/* Product — About 에서 아래로 내리면 제품이 떠오른다. 넓은 화면에서는 제품이 고정된 채 정보가 흐른다. */}
+      {/* Product — About 에서 아래로 내리면 제품이 흰 거품 사이에서 떠오른다. 넓은 화면에서는 제품이 고정된 채 정보가 흐른다. */}
       <section
         id="product"
         data-rise-scope=""
         className={`${SECTION} overflow-x-clip bg-gradient-to-b from-oru-sand via-[#ebe6eb] to-[#dcd6dd]`}
       >
         <div className="mx-auto grid max-w-[1320px] gap-10 px-5 md:grid-cols-2 md:gap-20 md:px-10">
-          <div className="flex items-center justify-center pt-16 md:sticky md:top-[72px] md:h-[calc(100svh-72px)] md:pt-0">
-            <RiseOnScroll>
+          <div className="relative flex items-center justify-center overflow-hidden pt-16 pb-[9svh] md:sticky md:top-[72px] md:h-[calc(100svh-72px)] md:pt-0">
+            <canvas
+              data-foam="back"
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full"
+            />
+            <RiseOnScroll className="relative">
               <Image
                 src={PRODUCT.image}
                 alt={PRODUCT.alt}
@@ -105,6 +113,11 @@ export default function BrandPage() {
                 className="h-auto max-h-[78svh] w-auto max-w-full drop-shadow-[0_30px_40px_rgba(60,50,70,0.28)]"
               />
             </RiseOnScroll>
+            <canvas
+              data-foam="front"
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 h-full w-full"
+            />
           </div>
           <div className="pb-24 md:max-w-[520px] md:py-[22vh]">
             <p className={EYEBROW}>{PRODUCT.eyebrow}</p>
