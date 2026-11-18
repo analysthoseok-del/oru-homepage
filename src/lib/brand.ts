@@ -25,11 +25,11 @@ export const LOGO = {
 };
 
 export const HERO = {
-  /** 화질을 높인 4K 물결 영상. 흰색 Oru 로고와 슬로건이 영상 안에 들어 있다. (2560px 로 줄임, 9초 반복, 약 6.4MB) */
+  /** 화질을 높인 4K 물결 영상에서 흐릿하게 박혀 있던 로고를 지운 것. 로고는 화면에서 선명하게 얹는다. (2560px, 9초 반복, 약 6.5MB) */
   video: "/brand/water.mp4",
   /** 영상이 뜨기 전, 그리고 '동작 줄이기' 설정에서 보이는 정지 화면 */
   poster: "/brand/water-poster.jpg",
-  label: "잔잔하게 일렁이는 물결 위에 Oru 로고가 놓인 영상",
+  label: "잔잔하게 일렁이는 물결 영상",
   tagline: "Inner Light, Pure Skin",
   keywords: "Longevity · Ritual · Emotional Wellness",
 };
