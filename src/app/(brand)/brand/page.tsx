@@ -4,7 +4,6 @@ import { AmbientVideo } from "@/components/brand/AmbientVideo";
 import {
   ABOUT,
   HERO,
-  LOGO,
   PHILOSOPHY,
   RITUAL,
   SANCTUARY,
@@ -33,7 +32,7 @@ function Lines({ lines }: { lines: readonly string[] }) {
 export default function BrandPage() {
   return (
     <>
-      {/* 1. Hero — 첫 화면을 채우는 물결 영상 위에 흰색 로고 */}
+      {/* 1. Hero — 첫 화면을 채우는 물결 영상 (흰색 로고 포함) */}
       <section
         aria-labelledby="hero-heading"
         className="relative flex h-[calc(100svh-64px)] min-h-[480px] flex-col overflow-hidden bg-oru-forest text-white md:h-[calc(100svh-72px)]"
@@ -46,24 +45,13 @@ export default function BrandPage() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-oru-ink/50 via-oru-ink/10 to-oru-ink/10"
+          className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-oru-ink/45 to-transparent"
         />
-        <div className="relative flex flex-1 flex-col items-center justify-center px-5 text-center">
-          <h1 id="hero-heading">
-            <Image
-              src={LOGO.white}
-              alt={LOGO.alt}
-              width={LOGO.width}
-              height={LOGO.height}
-              preload
-              sizes="(min-width: 768px) 340px, 220px"
-              className="h-auto w-[220px] md:w-[340px]"
-            />
-          </h1>
-          <p className="mt-5 font-serif text-[20px] tracking-[0.02em] md:mt-7 md:text-[30px]">
-            {HERO.tagline}
-          </p>
-        </div>
+        {/* 로고와 슬로건은 영상 안에 들어 있다. 화면에는 얹지 않고 스크린리더용 제목만 둔다. */}
+        <h1 id="hero-heading" className="sr-only">
+          Oru — {HERO.tagline}
+        </h1>
+        <div className="flex-1" />
         <p className="relative px-5 pb-10 text-center font-serif text-[15px] tracking-[0.04em] text-white md:pb-12 md:text-[18px]">
           {HERO.keywords}
         </p>
