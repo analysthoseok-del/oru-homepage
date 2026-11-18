@@ -33,7 +33,7 @@ function Lines({ lines }: { lines: readonly string[] }) {
 export default function BrandPage() {
   return (
     <>
-      {/* 1. Hero — 첫 화면을 채우는 물결 영상 위에 선명한 흰색 로고 */}
+      {/* 1. Hero — 첫 화면을 채우는 물결 영상 위에 흰색 로고 */}
       <section
         aria-labelledby="hero-heading"
         className="relative flex h-[calc(100svh-64px)] min-h-[480px] flex-col overflow-hidden bg-oru-forest text-white md:h-[calc(100svh-72px)]"
@@ -46,7 +46,7 @@ export default function BrandPage() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-oru-ink/50 via-oru-ink/15 to-oru-ink/15"
+          className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-oru-ink/40 to-transparent"
         />
         <div className="relative flex flex-1 flex-col items-center justify-center px-5 text-center">
           <h1 id="hero-heading">
@@ -57,10 +57,10 @@ export default function BrandPage() {
               height={LOGO.height}
               preload
               sizes="(min-width: 768px) 340px, 220px"
-              className="h-auto w-[220px] drop-shadow-[0_2px_14px_rgba(29,38,32,0.45)] md:w-[340px]"
+              className="h-auto w-[220px] md:w-[340px]"
             />
           </h1>
-          <p className="mt-5 font-serif text-[20px] tracking-[0.02em] [text-shadow:0_1px_10px_rgba(29,38,32,0.55)] md:mt-7 md:text-[30px]">
+          <p className="mt-5 font-serif text-[20px] tracking-[0.02em] md:mt-7 md:text-[30px]">
             {HERO.tagline}
           </p>
         </div>
