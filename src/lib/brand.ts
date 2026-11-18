@@ -8,6 +8,7 @@
  */
 
 export const BRAND_NAV = [
+  { href: "#product", label: "Product" },
   { href: "#about", label: "About" },
   { href: "#story", label: "Story" },
   { href: "#philosophy", label: "Philosophy" },
@@ -32,6 +33,40 @@ export const HERO = {
   label: "잔잔하게 일렁이는 물결 영상",
   tagline: "Inner Light, Pure Skin",
   keywords: "Longevity · Ritual · Emotional Wellness",
+};
+
+/**
+ * 대표 제품. 이름·성분·함량·용량은 제품 라벨에 적힌 그대로 옮겼다.
+ * 가격과 구매 경로는 정해지지 않아 넣지 않았다.
+ */
+export const PRODUCT = {
+  eyebrow: "Product",
+  ritual: "Ritual #1",
+  name: "Multi Bubble Serum",
+  tagline: "boost your skin with",
+  image: "/brand/multi-bubble-serum.jpg",
+  width: 1047,
+  height: 2000,
+  alt: "Oru Multi Bubble Serum 150mL 펌프 용기",
+  keyActivesLabel: "Key Actives",
+  keyActives: [
+    { index: "01", name: "Niacinamide B3", amount: "50,000ppm" },
+    { index: "02", name: "5GF-Complex H", amount: "10,000ppm" },
+    { index: "03", name: "Panthenol B5", amount: "10,000ppm" },
+    { index: "04", name: "Super Centella", amount: "1,000ppm" },
+    { index: "05", name: "Centella Asiatica", amount: "병풀잎수 363,862ppm" },
+  ],
+  supportingLabel: "Supporting Actives",
+  supporting:
+    "Adenosine · Caffeine · Ceramide NP · Hyaluronic Acid · Madecassoside · Allantoin · Green Tea · Lotus · Yuzu",
+  benefits: [
+    { ko: "진정", en: "Calming" },
+    { ko: "쿨링", en: "Cooling" },
+    { ko: "광채", en: "Radiance" },
+    { ko: "탄력", en: "Firming" },
+    { ko: "장벽", en: "Barrier" },
+  ],
+  volume: "150 mL / 5.07 fl.oz.",
 };
 
 export const ABOUT = {

@@ -6,6 +6,7 @@ import {
   HERO,
   LOGO,
   PHILOSOPHY,
+  PRODUCT,
   RITUAL,
   SANCTUARY,
   STORY,
@@ -67,6 +68,83 @@ export default function BrandPage() {
         <p className="relative px-5 pb-10 text-center font-serif text-[15px] tracking-[0.04em] text-white md:pb-12 md:text-[18px]">
           {HERO.keywords}
         </p>
+      </section>
+
+      {/* Product — 대표 제품. 큰 제품 사진 + 라벨 정보 */}
+      <section id="product" className={`${SECTION} bg-[#e9e4e9]`}>
+        <div className="mx-auto grid max-w-[1320px] items-center gap-12 px-5 py-20 md:grid-cols-2 md:gap-20 md:px-10 md:py-32">
+          <div className="mx-auto w-full max-w-[420px] overflow-hidden">
+            <Image
+              src={PRODUCT.image}
+              alt={PRODUCT.alt}
+              width={PRODUCT.width}
+              height={PRODUCT.height}
+              sizes="(min-width: 768px) 420px, 90vw"
+              className="h-auto w-full"
+            />
+          </div>
+          <div className="md:max-w-[520px]">
+            <p className={EYEBROW}>{PRODUCT.eyebrow}</p>
+            <p className="mt-8 text-[11px] uppercase tracking-[0.32em] text-oru-moss">
+              {PRODUCT.ritual}
+            </p>
+            <h2 className="mt-3 font-serif text-[36px] leading-[1.15] md:text-[52px]">
+              {PRODUCT.name}
+            </h2>
+            <p className="mt-3 font-serif text-[20px] italic text-oru-forest/80 md:text-[24px]">
+              {PRODUCT.tagline}
+            </p>
+
+            <h3 className="mt-10 text-[11px] uppercase tracking-[0.28em] text-oru-moss">
+              {PRODUCT.keyActivesLabel}
+            </h3>
+            <ul className="mt-3 border-t border-oru-forest/25">
+              {PRODUCT.keyActives.map((item) => (
+                <li
+                  key={item.index}
+                  className="flex items-baseline gap-4 border-b border-oru-forest/25 py-3"
+                >
+                  <span className="w-6 text-[11px] tracking-[0.1em] text-oru-moss">
+                    {item.index}
+                  </span>
+                  <span className="flex-1 font-serif text-[19px] font-semibold md:text-[21px]">
+                    {item.name}
+                  </span>
+                  <span className="text-right font-serif text-[16px] text-oru-forest md:text-[18px]">
+                    {item.amount}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="mt-8 text-[11px] uppercase tracking-[0.28em] text-oru-moss">
+              {PRODUCT.supportingLabel}
+            </h3>
+            <p className="mt-3 font-serif text-[17px] leading-[1.7] text-oru-forest md:text-[18px]">
+              {PRODUCT.supporting}
+            </p>
+
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
+              {PRODUCT.benefits.map((benefit) => (
+                <li
+                  key={benefit.en}
+                  className="border-l border-oru-forest/30 pl-3 first:border-l-0 first:pl-0"
+                >
+                  <span className="block text-[15px] font-semibold">
+                    {benefit.ko}
+                  </span>
+                  <span className="block text-[10px] uppercase tracking-[0.18em] text-oru-moss">
+                    {benefit.en}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-8 text-[12px] tracking-[0.14em] text-oru-forest/70">
+              {PRODUCT.volume}
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* 2. About — 브랜드 선언문 */}
